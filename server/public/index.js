@@ -1,20 +1,26 @@
-function speak(ws) {
-  var sentences = ['マジで', 'ヤバい', 'ウケる―'];
-  ws.send(sentences[Math.floor(Math.random() * sentences.length)]);
-  setTimeout(function () {
-    speak(ws);
-  }, Math.floor(Math.random() * 10) * 1000 + 3000);
+function Ui() {
+  var me = this;
+  this.prompt = document.querySelector('.prompt');
+  this.input  = document.querySelector('.input');
+  this.ws     = new WebSocket('ws://localhost:3000/');
+  this.input.addEventListener('submit', function (evt) {
+    evt.preventDefault();
+    var text = me.input.text.value;
+    me.input.text.value = '';
+    me.ws.send(text);
+    me.prompt.innerHTML = '<div>' + text + '</div>' + me.prompt.innerHTML;
+  });
+  this.ws.onopen = function (evt) {
+  };
+  this.ws.onmessage = function (evt) {
+    me.prompt.innerHTML = '<div>' + evt.data + '</div>' + me.prompt.innerHTML;
+  };
+  this.ws.onclose = function (evt) {
+  };
+  this.ws.onerror = function (evt) {
+  };
 }
 
 window.addEventListener('DOMContentLoaded', function () {
-  var ws = new WebSocket('ws://localhost:3000/');
-  ws.onopen = function (evt) {
-    speak(ws);
-  };
-  ws.onmessage = function (evt) {
-  };
-  ws.onclose = function (evt) {
-  };
-  ws.onerror = function (evt) {
-  };
+  new Ui();
 });

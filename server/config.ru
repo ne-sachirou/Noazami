@@ -23,7 +23,7 @@ class WsApp
   end
 
   def on_open evt
-    Thread.new do
+    @thread = Thread.new do
       while true
         sleep rand 3..13
         sentance = %w{マジで ヤバい ウケるー}.sample
@@ -38,6 +38,7 @@ class WsApp
   end
 
   def on_close evt
+    @thread.kill
   end
 
   def on_error evt
@@ -51,8 +52,15 @@ class App
       WsApp.new ws
       ws.rack_response
     else
-      body = open(__dir__ + "/public/#{env['REQUEST_PATH'][1..-1].presence || 'index.html'}", &:read).lines
-      ['200', {'Content-Type' => 'text/html'}, body]
+      filename = env['REQUEST_PATH'][1..-1].presence || 'index.html'
+      body = open(__dir__ + "/public/#{filename}", &:read).lines
+      content_type = case File.extname filename
+                     when '.html', '.htm' then 'text/html'
+                     when '.css'         then 'text/css'
+                     when '.js'          then 'application/javascript'
+                     else                    'text/plain'
+                     end
+      ['200', {'Content-Type' => content_type}, body]
     end
   end
 end
