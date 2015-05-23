@@ -8,12 +8,12 @@ function Ui() {
     var text = me.input.text.value;
     me.input.text.value = '';
     me.ws.send(text);
-    me.prompt.innerHTML = '<div>' + text + '</div>' + me.prompt.innerHTML;
+    me.prompt.innerHTML = '<p class="you">' + text + '</p>' + me.prompt.innerHTML;
   });
   this.ws.onopen = function (evt) {
   };
   this.ws.onmessage = function (evt) {
-    me.prompt.innerHTML = '<div>' + evt.data + '</div>' + me.prompt.innerHTML;
+    me.prompt.innerHTML = '<p class="me">' + evt.data + '</p>' + me.prompt.innerHTML;
   };
   this.ws.onclose = function (evt) {
   };

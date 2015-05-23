@@ -1,6 +1,33 @@
-.prompt {
+body {
+  margin: 0 auto;
+  max-width: 50em;
+}
+
+.input, .prompt {
+  margin: 0;
+  padding: 0.2em;
+}
+
+.prompt p, .input input {
+  box-sizing: border-box;
+  margin: 0.2em 0;
+  padding: 0.2em;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 0.2em;
+  border-color: transparent;
+}
+
+.prompt .me {
+  background: #ffc;
+}
+
+.prompt .you {
+  background: #cff;
 }
 
 .input input {
-  width : 140ex;
+  width : 100%;
+  font-size: medium;
+  border-color: #999;
 }
