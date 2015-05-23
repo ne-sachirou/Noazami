@@ -2,32 +2,9 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8"/>
-  <title></title>
+  <title>Noazami</title>
 </head>
 <body>
-  <script>
-  function speak(ws) {
-    var sentences = ['マジで', 'ヤバい', 'ウケる―'];
-    ws.send(sentences[Math.floor(Math.random() * sentences.length)]);
-    setTimeout(function () {
-      speak(ws);
-    }, Math.floor(Math.random() * 10) * 1000 + 3000);
-  }
-
-  var ws = new WebSocket('ws://localhost:3000/');
-  ws.onopen = function (evt) {
-    console.log(['OPEN', evt]);
-    speak(ws);
-  };
-  ws.onmessage = function (evt) {
-    console.log(['MESSAGE', evt, evt.data]);
-  };
-  ws.onclose = function (evt) {
-    console.log(['CLOSE', evt]);
-  };
-  ws.onerror = function (evt) {
-    console.error(['ERROR', evt]);
-  };
-  </script>
+  <script src="index.js"></script>
 </body>
 </html>

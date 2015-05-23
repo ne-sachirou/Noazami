@@ -1,6 +1,18 @@
 require 'bundler'
 Bundler.require
 
+class Object
+  def presence
+    present? ? self : nil
+  end
+end
+
+class String
+  def present?
+    self != ''
+  end
+end
+
 class WsApp
   def initialize ws
     @ws = ws
@@ -39,7 +51,7 @@ class App
       WsApp.new ws
       ws.rack_response
     else
-      body = open(__dir__ + '/public/index.html', &:read).lines
+      body = open(__dir__ + "/public/#{env['REQUEST_PATH'][1..-1].presence || 'index.html'}", &:read).lines
       ['200', {'Content-Type' => 'text/html'}, body]
     end
   end
