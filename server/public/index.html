@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8"/>
+  <title></title>
+</head>
+<body>
+  <script>
+  var ws = new WebSocket('ws://localhost:3000/');
+  ws.onopen = function (evt) {
+    console.log(['OPEN', evt]);
+    ws.send('Yeah!');
+  };
+  ws.onmessage = function (evt) {
+    console.log(['MESSAGE', evt]);
+    ws.close();
+  };
+  ws.onclose = function (evt) {
+    console.log(['CLOSE', evt]);
+  };
+  ws.onerror = function (evt) {
+    console.error(['ERROR', evt]);
+  };
+  </script>
+</body>
+</html>
