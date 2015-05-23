@@ -26,9 +26,9 @@ class WsApp
     @thread = Thread.new do
       while true
         sleep rand 3..13
-        sentance = %w{マジで ヤバい ウケるー}.sample
-        puts "> #{sentance}"
-        @ws.send sentance
+        sentence = %w{マジで ヤバい ウケるー}.sample
+        puts "> #{sentence}"
+        @ws.send sentence
       end
     end
   end
