@@ -17,6 +17,6 @@ PLATFORMS
 
 DEPENDENCIES
   bundler
+  eventmachine
   faye-websocket
   puma
-  rack
