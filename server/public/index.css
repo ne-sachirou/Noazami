@@ -1,33 +1,30 @@
 body {
-  margin: 0 auto;
-  max-width: 50em;
+  margin    : 0 auto;
+  max-width : 50em;
 }
 
 .input, .prompt {
-  margin: 0;
-  padding: 0.2em;
+  margin  : 0;
+  padding : 0.2em;
 }
 
-.prompt p, .input input {
-  box-sizing: border-box;
-  margin: 0.2em 0;
-  padding: 0.2em;
-  border-width: 1px;
-  border-style: solid;
-  border-radius: 0.2em;
-  border-color: transparent;
+.prompt_me, .prompt_you, .input_text {
+  border-radius : 0.2em;
+  border-style  : solid;
+  border-width  : 1px;
+  box-sizing    : border-box;
+  margin        : 0.2em 0;
+  padding       : 0.2em;
 }
 
-.prompt .me {
-  background: #ffc;
-}
+.prompt_me, .prompt_you { border-color  : transparent; }
 
-.prompt .you {
-  background: #cff;
-}
+.prompt_me { background : #ffc; }
+
+.prompt_you { background : #cff; }
 
 .input input {
-  width : 100%;
-  font-size: medium;
-  border-color: #999;
+  border-color : #999;
+  font-size    : medium;
+  width        : 100%;
 }
