@@ -1,0 +1,14 @@
+require 'active_record_migrations'
+
+ActiveRecordMigrations.load_tasks
+
+desc 'Annotate models.'
+task :annotate do
+  system 'annotate --model-dir models'
+end
+
+desc 'Check the Ruby coding style.'
+task :codingstyle do
+  system 'reek'
+  system 'rubocop'
+end
