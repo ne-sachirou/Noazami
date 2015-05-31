@@ -8,3 +8,5 @@ How to start the server
 3. `git clone https://github.com/ne-sachirou/Noazami.git && cd Noazami`
 4. `./server.sh`
 5. Access to _http://localhost:3000/_ on your Web browser.
+
+for Windows : [windows help](windows.md)
